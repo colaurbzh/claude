@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "doc-anonymizer"
+version = "0.1.0"
+description = "Anonymiseur de documents (txt, docx, csv, pdf) par détection d'informations personnelles"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+    "python-docx>=1.1.0",
+    "pypdf>=4.0.0",
+]
+
+[project.optional-dependencies]
+ner = ["spacy>=3.7"]
+pdf-redact = ["pymupdf>=1.24.0"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+doc-anonymizer = "doc_anonymizer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
